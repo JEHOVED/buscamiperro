@@ -1,0 +1,62 @@
+{
+  "name": "gateway-api",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/gateway-api/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/gateway-api",
+        "main": "apps/gateway-api/src/main.ts",
+        "tsConfig": "apps/gateway-api/tsconfig.app.json",
+        "assets": [],
+        "target": "node",
+        "compiler": "tsc"
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/gateway-api/src/environments/environment.ts",
+              "with": "apps/gateway-api/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "options": {
+        "buildTarget": "gateway-api:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "gateway-api:build:development"
+        },
+        "production": {
+          "buildTarget": "gateway-api:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/gateway-api/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/gateway-api/jest.config.ts"
+      }
+    }
+  },
+  "tags": ["scope:gateway", "type:app"]
+}

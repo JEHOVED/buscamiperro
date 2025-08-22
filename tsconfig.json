@@ -1,0 +1,45 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "./apps/frontend-web"
+    },
+    {
+      "path": "./apps/gateway-api"
+    },
+    {
+      "path": "./services/auth-service"
+    },
+    {
+      "path": "./services/dogs-service"
+    },
+    {
+      "path": "./services/sightings-service"
+    },
+    {
+      "path": "./services/match-service"
+    },
+    {
+      "path": "./services/chat-service"
+    },
+    {
+      "path": "./services/notification-service"
+    },
+    {
+      "path": "./services/profile-service"
+    },
+    {
+      "path": "./services/report-service"
+    }
+  ]
+}

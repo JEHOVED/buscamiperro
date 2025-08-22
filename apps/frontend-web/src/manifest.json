@@ -1,0 +1,106 @@
+{
+  "name": "BuscaMiPerro - Encuentra a tu mejor amigo",
+  "short_name": "BuscaMiPerro",
+  "theme_color": "#1976d2",
+  "background_color": "#fafafa",
+  "display": "standalone",
+  "scope": "./",
+  "start_url": "./",
+  "orientation": "portrait-primary",
+  "categories": ["lifestyle", "utilities"],
+  "description": "Aplicación para encontrar perros perdidos y reportar avistamientos. Ayuda a reunir mascotas con sus familias.",
+  "lang": "es",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "assets/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Reportar perro perdido",
+      "short_name": "Reportar",
+      "description": "Reportar un perro perdido rápidamente",
+      "url": "/perros/nuevo",
+      "icons": [
+        {
+          "src": "assets/icons/shortcut-report.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Ver mapa",
+      "short_name": "Mapa",
+      "description": "Ver el mapa de perros perdidos y avistamientos",
+      "url": "/mapa",
+      "icons": [
+        {
+          "src": "assets/icons/shortcut-map.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "assets/screenshots/desktop-1.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Vista del mapa en desktop"
+    },
+    {
+      "src": "assets/screenshots/mobile-1.png",
+      "sizes": "375x667",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Vista del mapa en móvil"
+    }
+  ]
+}
