@@ -1,0 +1,42 @@
+# Docker Compose para Auth Service
+version: '3.8'
+
+services:
+  auth-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=postgres
+      - DB_NAME=buscamiperro_auth
+      - JWT_SECRET=buscamiperro_jwt_secret_key_2023
+      - PORT=3001
+    depends_on:
+      - postgres
+    networks:
+      - buscamiperro-network
+
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: buscamiperro_auth
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - buscamiperro-network
+
+volumes:
+  postgres_data:
+
+networks:
+  buscamiperro-network:
+    driver: bridge

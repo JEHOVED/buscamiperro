@@ -1,0 +1,36 @@
+# Docker Compose para Search Service
+version: '3.8'
+
+services:
+  search-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3010:3010"
+    environment:
+      - ELASTICSEARCH_HOST=elasticsearch:9200
+      - PORT=3010
+    depends_on:
+      - elasticsearch
+    networks:
+      - buscamiperro-network
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.0
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    ports:
+      - "9200:9200"
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+    networks:
+      - buscamiperro-network
+
+volumes:
+  elasticsearch_data:
+
+networks:
+  buscamiperro-network:
+    driver: bridge

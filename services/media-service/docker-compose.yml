@@ -1,0 +1,44 @@
+# Docker Compose para Media Service
+version: '3.8'
+
+services:
+  media-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3009:3009"
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=postgres
+      - DB_NAME=buscamiperro_media
+      - PORT=3009
+    depends_on:
+      - postgres
+    volumes:
+      - media_uploads:/app/uploads
+    networks:
+      - buscamiperro-network
+
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: buscamiperro_media
+    ports:
+      - "5441:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - buscamiperro-network
+
+volumes:
+  media_uploads:
+  postgres_data:
+
+networks:
+  buscamiperro-network:
+    driver: bridge

@@ -1,0 +1,41 @@
+# Docker Compose para Dogs Service
+version: '3.8'
+
+services:
+  dogs-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3002:3002"
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=postgres
+      - DB_NAME=buscamiperro_dogs
+      - PORT=3002
+    depends_on:
+      - postgres
+    networks:
+      - buscamiperro-network
+
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: buscamiperro_dogs
+    ports:
+      - "5434:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - buscamiperro-network
+
+volumes:
+  postgres_data:
+
+networks:
+  buscamiperro-network:
+    driver: bridge
